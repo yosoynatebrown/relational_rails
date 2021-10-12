@@ -1,1 +1,3 @@
-<%= @coaches %>
+<% @coaches.each do |coach| %>
+  <h2><a href="/coaches/<%= coach.id %>"><%= coach.name %></a></h2>
+<% end %>
