@@ -1,3 +1,6 @@
+<h2>All Coaches</h2>
+
+
 <% @coaches.each do |coach| %>
-  <h2><a href="/coaches/<%= coach.id %>"><%= coach.name %></a></h2>
+  <h6><a href="/coaches/<%= coach.id %>"><%= coach.name %></a></h6>
 <% end %>
