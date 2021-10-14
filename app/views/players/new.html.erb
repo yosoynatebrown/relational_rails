@@ -1,0 +1,10 @@
+<form action="/players" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h2>Enter a new city, dawg:</h2>
+  <p>Name</p><input type="text" name='player[name]' /><br/>
+  <p>Above 4000 Feet?</p>
+  <input type="checkbox" name='player[above_4000_feet]'/><br/>
+  <p>Population</p>
+  <input type="number" name='player[population]'/>
+  <input type="submit"/>
+  </form>
