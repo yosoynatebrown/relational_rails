@@ -1,0 +1,6 @@
+<h2>All Cities</h2>
+
+
+<% @cities.each do |city| %>
+  <h6><a href="/cities/<%= city.id %>"><%= city.name %></a></h6>
+<% end %>

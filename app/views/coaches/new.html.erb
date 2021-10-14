@@ -1,0 +1,10 @@
+<form action="/coaches" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h2>Enter a new coach, dawg:</h2>
+  <p>Name</p><input type="text" name='coach[name]' /><br/>
+  <p>Won Championship?</p>
+  <input type="checkbox" name='coach[won_championship]'/><br/>
+  <p>Number of Years Coaching</p>
+  <input type="number" name='coach[years_coaching]'/>
+  <input type="submit"/>
+  </form>
