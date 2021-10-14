@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# Schema
+https://app.dbdesigner.net/designer/schema/0-pairproject

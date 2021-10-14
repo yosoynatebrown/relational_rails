@@ -11,13 +11,11 @@ class PlayersController < ApplicationController
   end
 
   def create
-    player = Player.new({
+    player = Player.create!({
       name: params[:player][:name],
-      above_4000_feet: params[:player][:above_4000_feet] == "on" ? true : false,
-      population: params[:player][:population].to_i
+      MVP: params[:player][:MVP] == "on" ? true : false,
+      career_total_points: params[:player][:career_total_points].to_i
       })
-
-      player.save
 
       redirect_to '/players'
   end
