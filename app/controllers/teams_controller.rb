@@ -11,14 +11,13 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = Team.new({
+    team = Team.create!({
       name: params[:team][:name],
-      above_4000_feet: params[:team][:above_4000_feet] == "on" ? true : false,
-      population: params[:team][:population].to_i
+      share_stadium: params[:team][:share_stadium] == "on" ? true : false,
+      roster_count: params[:team][:roster_count].to_i
       })
 
-      team.save
-
+      binding.pry
       redirect_to '/teams'
   end
 end

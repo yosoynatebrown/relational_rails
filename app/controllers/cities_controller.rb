@@ -11,13 +11,11 @@ class CitiesController < ApplicationController
   end
 
   def create
-    city = City.new({
+    city = City.create!({
       name: params[:city][:name],
       above_4000_feet: params[:city][:above_4000_feet] == "on" ? true : false,
       population: params[:city][:population].to_i
       })
-
-      city.save
 
       redirect_to '/cities'
   end
