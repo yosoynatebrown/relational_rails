@@ -11,13 +11,12 @@ RSpec.describe 'Teams index' do
   end
   it 'shows the name of all teams' do
     visit "/teams/"
-    save_and_open_page
+
     expect(page).to have_content(@giants.name)
     expect(page).to have_content(@jazz.name)
     expect(page).to have_content(@slc.name)
     expect(page).to have_content(@sf.name)
     expect(page).to have_content(@giants.share_stadium)
     expect(page).to have_content(@giants.roster_count)
-
   end
 end

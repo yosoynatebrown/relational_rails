@@ -10,7 +10,7 @@ RSpec.describe 'Players index' do
   end
   it 'shows the name of all players' do
     visit "/players/"
-    save_and_open_page
+    
     expect(page).to have_content(@dj.name)
     expect(page).to have_content(@tb.name)
     expect(page).to have_content(@madden.name)
