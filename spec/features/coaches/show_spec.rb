@@ -5,7 +5,6 @@ RSpec.describe 'Coaches show' do
   before :each do
     @madden = Coach.create!(name: "John Madden", won_championship: true, years_coaching: 18)
     @cooper = Coach.create!(name: "John Cooper", won_championship: true, years_coaching: 7)
-
   end
   it 'shows the name of all coaches' do
     visit "/coaches/#{@madden.id}"
