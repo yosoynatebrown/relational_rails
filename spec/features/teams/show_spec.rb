@@ -23,4 +23,16 @@ RSpec.describe 'Teams show' do
 
     expect(page).to_not have_content(@giants.name)
   end
+
+  it 'has a header with links to other indexes' do
+    visit "/cities/"
+
+    click_link('Cities')
+    expect(current_path).to eq("/cities")
+
+    expect(page.has_link? "Players").to be true
+    expect(page.has_link? "Cities").to be true
+    expect(page.has_link? "Teams").to be true
+    expect(page.has_link? "Coaches").to be true
+  end
 end
