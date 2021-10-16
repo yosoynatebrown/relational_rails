@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/coaches/:id', to: 'coaches#show'
   get '/coaches/:id/players', to: 'coach_players#index'
   post '/coaches/', to: 'coaches#create'
+  patch '/coaches/:id', to: 'coaches#update'
+  get '/coaches/:id/edit', to: 'coaches#edit'
 
 
   get '/cities', to: 'cities#index'

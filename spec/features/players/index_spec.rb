@@ -18,4 +18,16 @@ RSpec.describe 'Players index' do
     expect(page).to have_content(@tb.MVP)
     expect(page).to have_content(@tb.career_total_points)
   end
+
+  it 'has a header with links to other indexes' do
+    visit "/cities/"
+
+    click_link('Teams')
+    expect(current_path).to eq("/teams")
+
+    expect(page.has_link? "Players").to be true
+    expect(page.has_link? "Cities").to be true
+    expect(page.has_link? "Teams").to be true
+    expect(page.has_link? "Coaches").to be true
+  end
 end

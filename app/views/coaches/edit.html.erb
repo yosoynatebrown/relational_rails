@@ -1,0 +1,9 @@
+<%= form_with url: "/coaches/#{@coach.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :won_championship %>
+  <%= form.check_box :won_championship %>
+  <%= form.label :years_coaching %>
+  <%= form.text_field :years_coaching %>
+  <%= form.submit "Update Coach" %>
+<% end %>

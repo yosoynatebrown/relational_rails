@@ -1,10 +1,10 @@
-<form action="/cities" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <h2>Enter a new city, dawg:</h2>
-  <p>Name</p><input type="text" name='city[name]' /><br/>
-  <p>Above 4000 Feet?</p>
-  <input type="checkbox" name='city[above_4000_feet]'/><br/>
-  <p>Population</p>
-  <input type="number" name='city[population]'/>
-  <input type="submit"/>
-  </form>
+
+<%= form_with url: '/cities', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :above_4000_feet %>
+  <%= form.check_box :above_4000_feet %>
+  <%= form.label :population %>
+  <%= form.text_field :population %>
+  <%= form.submit "Create City" %>
+<% end %>
