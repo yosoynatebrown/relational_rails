@@ -1,0 +1,6 @@
+<h2><%= @city.name%>'s Teams</h2>
+
+
+<% @teams.each do |team| %>
+  <h6>Team: <%= team.name%> Share Stadium? <%= team.share_stadium%> Roster Count: <%= team.roster_count%></h6>
+<% end %>
