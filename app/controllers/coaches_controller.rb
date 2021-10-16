@@ -11,9 +11,10 @@ class CoachesController < ApplicationController
   end
 
   def create
+    # require "pry"; binding.pry
     coach = Coach.create!({
-      name: params[:coach][:name],
-      won_championship: params[:coach][:won_championship] == "on" ? true : false,
+      name: params[:name],
+      won_championship: params[:won_championship] == "1" ? true : false,
       years_coaching: params[:years_coaching].to_i
       })
 

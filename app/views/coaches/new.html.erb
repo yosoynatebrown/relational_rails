@@ -1,10 +1,9 @@
-<form action="/coaches" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <h2>Enter a new coach, dawg:</h2>
-  <p>Name</p><input type="text" name='coach[name]' /><br/>
-  <p>Won Championship?</p>
-  <input type="checkbox" name='coach[won_championship]'/><br/>
-  <p>Number of Years Coaching</p>
-  <input type="number" name='coach[years_coaching]'/>
-  <input type="submit"/>
-  </form>
+<%= form_with url: '/coaches', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :won_championship %>
+  <%= form.check_box :won_championship %>
+  <%= form.label :years_coaching %>
+  <%= form.text_field :years_coaching %>
+  <%= form.submit "Create Coach" %>
+<% end %>
