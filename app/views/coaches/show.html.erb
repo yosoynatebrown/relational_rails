@@ -1,7 +1,6 @@
 <a href='/coaches'>Back to Coaches List</a>
 <br/><br/><br/>
 
-
 ID:<br/>
 <%= @coach.id %><br/>
 Name:<br/>
@@ -16,3 +15,5 @@ Updated at:<br/>
 <%= @coach.updated_at %><br/>
 Player Count:<br/>
 <%= @coach.player_count %><br/>
+
+<a href='/coaches/<%=@coach.id%>/players'>Coach's Players</a>

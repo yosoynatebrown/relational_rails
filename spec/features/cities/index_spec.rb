@@ -15,9 +15,21 @@ RSpec.describe 'Cities index' do
 
   it 'displays the time created of all cities in the correct order' do
     visit "/cities/"
-    
+
     expect(page).to have_content(@slc.created_at)
     expect(page).to have_content(@sf.created_at)
     expect(page.text.index(@slc.name)).to be > page.text.index(@sf.name)
+  end
+
+  it 'has a header with links to other indexes' do
+    visit "/cities/"
+
+    click_link('Players')
+    expect(current_path).to eq("/players")
+
+    expect(page.has_link? "Players").to be true
+    expect(page.has_link? "Cities").to be true
+    expect(page.has_link? "Teams").to be true
+    expect(page.has_link? "Coaches").to be true
   end
 end

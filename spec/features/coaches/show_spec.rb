@@ -32,4 +32,11 @@ RSpec.describe 'Coaches show' do
 
     expect(page).to have_content('Player Count: ' + @madden.player_count.to_s)
   end
+
+  it 'has a link to child index' do
+    visit "/coaches/#{@madden.id}"
+
+    click_link('Coach\'s Players')
+    expect(current_path).to eq("/coaches/#{@madden.id}/players")
+  end
 end

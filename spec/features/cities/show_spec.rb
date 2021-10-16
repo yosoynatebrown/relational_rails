@@ -32,4 +32,23 @@ RSpec.describe 'Cities show' do
 
     expect(page).to have_content('Team Count: ' + @slc.team_count.to_s)
   end
+
+  it 'has a header with links to other indexes' do
+    visit "/cities/"
+
+    click_link('Players')
+    expect(current_path).to eq("/players")
+
+    expect(page.has_link? "Players").to be true
+    expect(page.has_link? "Cities").to be true
+    expect(page.has_link? "Teams").to be true
+    expect(page.has_link? "Coaches").to be true
+  end
+
+  it 'has a link to child index' do
+    visit "/cities/#{@slc.id}"
+
+    click_link('City\'s Teams')
+    expect(current_path).to eq("/cities/#{@slc.id}/teams")
+  end
 end
