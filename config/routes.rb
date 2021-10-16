@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/coaches', to: 'coaches#index'
   get '/coaches/new', to: 'coaches#new'
   get '/coaches/:id', to: 'coaches#show'
+  get '/coaches/:id/players', to: 'coach_players#index'
   post '/coaches/', to: 'coaches#create'
+
 
   get '/cities', to: 'cities#index'
   get '/cities/new', to: 'cities#new'
