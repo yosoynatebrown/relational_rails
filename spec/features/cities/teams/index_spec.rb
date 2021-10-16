@@ -12,7 +12,7 @@ RSpec.describe 'Cities teams index' do
 
   it 'shows all of the attributes of each city\'s teams'  do
     visit "/cities/#{@slc.id}/teams"
-    save_and_open_page
+    
     expect(page).to have_content(@jazz.name)
     expect(page).to have_content(@jazz.share_stadium)
     expect(page).to have_content(@jazz.roster_count)
