@@ -13,10 +13,15 @@ RSpec.describe 'Coaches players index' do
 
   it 'shows all of the attributes of each coach\'s players' do
     visit "/coaches/#{@madden.id}/players"
-    save_and_open_page
+
     expect(page).to have_content(@mj.name)
     expect(page).to have_content(@mj.MVP)
     expect(page).to have_content(@mj.career_total_points)
     expect(page).to have_content(@mj.coach.name)
+
+    expect(page).to have_content(@dj.name)
+    expect(page).to have_content(@dj.MVP)
+    expect(page).to have_content(@dj.career_total_points)
+    expect(page).to have_content(@dj.coach.name)
   end
 end
