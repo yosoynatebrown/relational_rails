@@ -26,7 +26,7 @@ RSpec.describe 'Coaches players index' do
   end
 
   it 'has a header with links to other indexes' do
-    visit "/cities/"
+    visit "/coaches/"
 
     click_link('Coaches')
     expect(current_path).to eq("/coaches")
@@ -36,6 +36,11 @@ RSpec.describe 'Coaches players index' do
     expect(page.has_link? "Teams").to be true
     expect(page.has_link? "Coaches").to be true
   end
+  
+  it 'has an add new player form' do
+    visit "/coaches/#{@madden.id}/players"
+
+    expect(page.has_link? "Add Player").to be true
 
   it 'has a working link to sort the players in alphabetical order' do
     visit "/coaches/#{@madden.id}/players"

@@ -23,6 +23,24 @@ RSpec.describe 'Cities teams index' do
     expect(page).to have_content(@real.roster_count)
     expect(page).to have_content(@real.city.name)
   end
+  
+  it 'has a header with links to other indexes' do
+    visit "/coaches/"
+
+    click_link('Coaches')
+    expect(current_path).to eq("/coaches")
+
+    expect(page.has_link? "Players").to be true
+    expect(page.has_link? "Cities").to be true
+    expect(page.has_link? "Teams").to be true
+    expect(page.has_link? "Coaches").to be true
+  end
+
+  it 'has an add new team form' do
+    visit "/cities/#{@slc.id}/teams"
+
+    expect(page.has_link? "Add Team").to be true
+  end 
 
   it 'has a link to sort the teams in alphabetical order' do
     visit "/cities/#{@slc.id}/teams"
