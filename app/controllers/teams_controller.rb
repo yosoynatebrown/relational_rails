@@ -20,4 +20,11 @@ class TeamsController < ApplicationController
       binding.pry
       redirect_to '/teams'
   end
+
+  def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+
+    redirect_to '/teams'
+  end
 end

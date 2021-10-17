@@ -26,9 +26,12 @@ Rails.application.routes.draw do
   get '/players/new', to: 'players#new'
   get '/players/:id', to: 'players#show'
   post '/players/', to: 'players#create'
+  delete '/players/:id', to: 'players#destroy'
+
 
   get '/teams', to: 'teams#index'
   get '/teams/new', to: 'teams#new'
   get '/teams/:id', to: 'teams#show'
   post '/teams/', to: 'teams#create'
+  delete '/teams/:id', to: 'teams#destroy'
 end
