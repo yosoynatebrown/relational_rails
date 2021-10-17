@@ -40,4 +40,5 @@ RSpec.describe 'Players index' do
     expect(page).to have_content(@tb.name)
     expect(page).to_not have_content(@mark.name)
   end
+  
 end

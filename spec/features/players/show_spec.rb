@@ -23,4 +23,18 @@ RSpec.describe 'Players show' do
 
     expect(page).to_not have_content(@dj.name)
   end
+
+  it 'has the ability to delete the current coach' do
+    visit "/coaches/#{@madden.id}"
+
+    click_link('Delete Coach')
+
+    expect(current_path).to eq("/coaches")
+    expect(page).to_not have_content(@madden.name)
+
+    visit "/players/"
+
+    expect(page).to_not have_content(@willie.name)
+    expect(page).to_not have_content(@fred.name)
+  end
 end

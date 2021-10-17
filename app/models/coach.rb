@@ -1,5 +1,5 @@
 class Coach < ApplicationRecord
- has_many :players
+ has_many :players, :dependent => :destroy
 
  def player_count
    self.players.count
