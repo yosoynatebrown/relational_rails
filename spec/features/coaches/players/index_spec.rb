@@ -5,10 +5,10 @@ RSpec.describe 'Coaches players index' do
     @madden = Coach.create!(name: "John Madden", won_championship: true, years_coaching: 18)
     @cooper = Coach.create!(name: "John Cooper", won_championship: true, years_coaching: 7)
 
+    @mj = Player.create!(name: "Michael Jordan", MVP: true, career_total_points: 10000000, coach: @madden)
     @dj = Player.create!(name: "Derek Jeter", MVP: true, career_total_points: 4000, coach: @madden)
     @tb = Player.create!(name: "Tom Brady", MVP: true, career_total_points: 6000, coach: @cooper)
     @bp = Player.create!(name: "Brayden Point", MVP: false, career_total_points: 2400, coach: @cooper)
-    @mj = Player.create!(name: "Michael Jordan", MVP: true, career_total_points: 10000000, coach: @madden)
   end
 
   it 'shows all of the attributes of each coach\'s players' do
@@ -36,10 +36,19 @@ RSpec.describe 'Coaches players index' do
     expect(page.has_link? "Teams").to be true
     expect(page.has_link? "Coaches").to be true
   end
-
+  
   it 'has an add new player form' do
     visit "/coaches/#{@madden.id}/players"
 
     expect(page.has_link? "Add Player").to be true
+
+  it 'has a working link to sort the players in alphabetical order' do
+    visit "/coaches/#{@madden.id}/players"
+
+    expect(page.has_link? "Sort Alphabetically").to be true
+    
+    click_link "Sort Alphabetically"
+
+    expect(page.text.index(@dj.name)).to be < page.text.index(@mj.name)
   end
 end

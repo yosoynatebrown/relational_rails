@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = Team.where(share_stadium: true)
   end
 
   def new
@@ -19,5 +19,12 @@ class TeamsController < ApplicationController
 
       binding.pry
       redirect_to '/teams'
+  end
+
+  def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+
+    redirect_to '/teams'
   end
 end

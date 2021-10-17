@@ -1,7 +1,12 @@
 class CoachPlayersController < ApplicationController
   def index
-    @coach = Coach.find(params[:id])
-    @players = @coach.players
+    if params[:alpha]
+      @coach = Coach.find(params[:id])
+      @players = @coach.players.order(:name)
+    else
+      @coach = Coach.find(params[:id])
+      @players = @coach.players
+    end
   end
 
   def new
