@@ -51,4 +51,19 @@ RSpec.describe 'Cities show' do
     click_link('City\'s Teams')
     expect(current_path).to eq("/cities/#{@slc.id}/teams")
   end
+
+  it 'has the ability to delete the current city' do
+    visit "/cities/#{@slc.id}"
+
+    click_link('Delete City')
+
+    expect(current_path).to eq("/cities")
+    expect(page).to_not have_content(@slc.name)
+
+    visit "/teams/"
+
+    expect(page).to_not have_content(@jazz.name)
+    expect(page).to_not have_content(@real.name)
+  end
+
 end

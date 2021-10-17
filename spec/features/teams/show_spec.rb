@@ -35,4 +35,13 @@ RSpec.describe 'Teams show' do
     expect(page.has_link? "Teams").to be true
     expect(page.has_link? "Coaches").to be true
   end
+
+  it 'has the ability to delete the current team' do
+    visit "/teams/#{@giants.id}"
+
+    click_link('Delete Team')
+
+    expect(current_path).to eq("/teams")
+    expect(page).to_not have_content(@giants.name)
+  end
 end

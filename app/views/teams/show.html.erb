@@ -14,3 +14,6 @@ Created at:<br/>
 <%= @team.created_at %><br/>
 Updated at:<br/>
 <%= @team.updated_at %><br/>
+
+
+<%=link_to "Delete Team", "/teams/#{@team.id}", method: :delete %>

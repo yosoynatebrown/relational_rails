@@ -31,6 +31,13 @@ class CoachesController < ApplicationController
     redirect_to '/coaches'
   end
 
+  def destroy
+    @coach = Coach.find(params[:id])
+    @coach.destroy
+
+    redirect_to '/coaches'
+  end
+
   private
   def coach_params
     params.permit(:name, :won_championship, :years_coaching)

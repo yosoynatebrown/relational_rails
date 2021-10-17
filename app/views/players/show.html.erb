@@ -14,3 +14,6 @@ Created at:<br/>
 <%= @player.created_at %><br/>
 Updated at:<br/>
 <%= @player.updated_at %><br/>
+
+
+<%=link_to "Delete Player", "/players/#{@player.id}", method: :delete %>

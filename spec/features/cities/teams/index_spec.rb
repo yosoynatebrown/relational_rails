@@ -12,7 +12,7 @@ RSpec.describe 'Cities teams index' do
 
   it 'shows all of the attributes of each city\'s teams'  do
     visit "/cities/#{@slc.id}/teams"
-    
+
     expect(page).to have_content(@jazz.name)
     expect(page).to have_content(@jazz.share_stadium)
     expect(page).to have_content(@jazz.roster_count)
@@ -22,5 +22,15 @@ RSpec.describe 'Cities teams index' do
     expect(page).to have_content(@real.share_stadium)
     expect(page).to have_content(@real.roster_count)
     expect(page).to have_content(@real.city.name)
+  end
+
+  it 'has a link to sort the teams in alphabetical order' do
+    visit "/cities/#{@slc.id}/teams"
+    
+    expect(page.has_link? "Sort Alphabetically").to be true
+
+    click_link "Sort Alphabetically"
+
+    expect(page.text.index(@real.name)).to be < page.text.index(@jazz.name)
   end
 end

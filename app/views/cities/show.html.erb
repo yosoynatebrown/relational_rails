@@ -20,3 +20,4 @@ Team Count:<br/>
 <a href='/cities/<%=@city.id%>/teams'>City's Teams</a>
 
 <%=link_to "Edit City", "/cities/#{@city.id}/edit"%>
+<%=link_to "Delete City", "/cities/#{@city.id}", method: :delete %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/coaches/', to: 'coaches#create'
   patch '/coaches/:id', to: 'coaches#update'
   get '/coaches/:id/edit', to: 'coaches#edit'
+  delete '/coaches/:id', to: 'coaches#destroy'
+
 
 
   get '/cities', to: 'cities#index'
@@ -17,14 +19,19 @@ Rails.application.routes.draw do
   post '/cities/', to: 'cities#create'
   patch '/cities/:id', to: 'cities#update'
   get '/cities/:id/edit', to: 'cities#edit'
+  delete '/cities/:id', to: 'cities#destroy'
+
 
   get '/players', to: 'players#index'
   get '/players/new', to: 'players#new'
   get '/players/:id', to: 'players#show'
   post '/players/', to: 'players#create'
+  delete '/players/:id', to: 'players#destroy'
+
 
   get '/teams', to: 'teams#index'
   get '/teams/new', to: 'teams#new'
   get '/teams/:id', to: 'teams#show'
   post '/teams/', to: 'teams#create'
+  delete '/teams/:id', to: 'teams#destroy'
 end

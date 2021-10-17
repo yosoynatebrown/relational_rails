@@ -19,3 +19,4 @@ Player Count:<br/>
 <a href='/coaches/<%=@coach.id%>/players'>Coach's Players</a>
 
 <%=link_to "Edit Coach", "/coaches/#{@coach.id}/edit"%>
+<%=link_to "Delete Coach", "/coaches/#{@coach.id}", method: :delete %>

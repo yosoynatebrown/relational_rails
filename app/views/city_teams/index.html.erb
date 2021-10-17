@@ -1,5 +1,7 @@
 <h2><%= @city.name%>'s Teams</h2>
 
+<%= link_to "Sort Alphabetically", "/cities/#{@city.id}/teams?alpha=true" %>
+
 
 <% @teams.each do |team| %>
   <h6>Team: <%= team.name%> Share Stadium? <%= team.share_stadium%> Roster Count: <%= team.roster_count%></h6>
