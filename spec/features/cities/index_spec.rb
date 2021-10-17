@@ -32,4 +32,12 @@ RSpec.describe 'Cities index' do
     expect(page.has_link? "Teams").to be true
     expect(page.has_link? "Coaches").to be true
   end
+
+  it 'links to the new coach page' do
+    visit "/cities/"
+
+    click_link("New City")
+
+    expect(current_path).to eq("/cities/new")
+  end
 end

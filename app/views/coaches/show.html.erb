@@ -17,3 +17,5 @@ Player Count:<br/>
 <%= @coach.player_count %><br/>
 
 <a href='/coaches/<%=@coach.id%>/players'>Coach's Players</a>
+
+<%=link_to "Edit Coach", "/coaches/#{@coach.id}/edit"%>

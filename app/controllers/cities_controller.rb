@@ -12,11 +12,27 @@ class CitiesController < ApplicationController
 
   def create
     city = City.create!({
-      name: params[:city][:name],
-      above_4000_feet: params[:city][:above_4000_feet] == "on" ? true : false,
-      population: params[:city][:population].to_i
+      name: params[:name],
+      above_4000_feet: params[:above_4000_feet] == "1" ? true : false,
+      population: params[:population].to_i
       })
 
       redirect_to '/cities'
+  end
+
+  def edit
+    @city = City.find(params[:id])
+  end
+
+  def update
+    @city = City.find(params[:id])
+    @city.update(city_params)
+
+    redirect_to '/cities'
+  end
+
+  private
+  def city_params
+    params.permit(:name, :above_4000_feet, :population)
   end
 end

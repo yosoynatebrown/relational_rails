@@ -1,10 +1,9 @@
-
-<%= form_with url: '/cities', method: :post, local: true do |form| %>
+<%= form_with url: "/cities/#{@city.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
   <%= form.label :above_4000_feet %>
   <%= form.check_box :above_4000_feet %>
   <%= form.label :population %>
   <%= form.text_field :population %>
-  <%= form.submit "Create City" %>
+  <%= form.submit "Update City" %>
 <% end %>

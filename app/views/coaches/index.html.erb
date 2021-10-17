@@ -4,3 +4,5 @@
 <% @coaches.each do |coach| %>
   <h6 class="#{coach.id}"><a href="/coaches/<%= coach.id %>"> Coach: <%= coach.name %> Created at: <%= coach.created_at %></a></h6>
 <% end %>
+
+<a href='/coaches/new'>New Coach</a>
