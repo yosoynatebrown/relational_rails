@@ -4,3 +4,5 @@
 <% @teams.each do |team| %>
   <h6>Team: <%= team.name%> Share Stadium? <%= team.share_stadium%> Roster Count: <%= team.roster_count%></h6>
 <% end %>
+
+<%=link_to "Add Team", "/cities/#{@city.id}/teams/new"%>

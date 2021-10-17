@@ -1,0 +1,11 @@
+<%= form_with url: "/cities/#{@city.id}/teams", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :share_stadium %>
+  <%= form.check_box :share_stadium %>
+  <%= form.label :roster_count %>
+  <%= form.text_field :roster_count %>
+  <%= form.hidden_field :city_id, value: @city.id %>
+
+  <%= form.submit "Add Team" %>
+<% end %>
