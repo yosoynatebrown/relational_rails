@@ -20,4 +20,19 @@ class CoachPlayersController < ApplicationController
       redirect_to "/coaches/#{@coach.id}/players"
   end
 
+  def edit
+    @coach = Coach.find(params[:id])
+    @player = Player.find(params[:id])
+
+    redirect_to '/coaches/players'
+  end
+
+  private
+  def coach_params
+    params.permit(:name, :won_championship, :years_coaching)
+  end
+
+  def player_params
+    params.permit(:name, :MVP, :years_coaching)
+  end 
 end

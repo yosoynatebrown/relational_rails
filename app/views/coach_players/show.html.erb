@@ -1,0 +1,19 @@
+<a href='/coaches/players'>Back to Coach's Players List</a>
+<br/><br/><br/>
+
+ID:<br/>
+<%= @player.id %><br/>
+Name:<br/>
+<%= @player.name %><br/>
+Won Championship?<br/>
+<%= @player.MVP %><br/>
+Years Coaching:<br/>
+<%= @player.career_total_points %><br/>
+Created at:<br/>
+<%= @player.created_at %><br/>
+Updated at:<br/>
+<%= @player.updated_at %><br/>
+
+<a href='/coaches/<%=@coach.id%>/players'>Coach's Players</a>
+
+<%=link_to "Edit Coach", "/coaches/#{@coach.id}/players/#{@palyer.id}/edit"%>
