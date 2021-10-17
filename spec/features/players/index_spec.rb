@@ -40,5 +40,15 @@ RSpec.describe 'Players index' do
     expect(page).to have_content(@tb.name)
     expect(page).to_not have_content(@mark.name)
   end
-  
+
+
+    it 'has working delete player link' do
+      visit "/players/"
+
+      click_link("Delete #{@dj.name}")
+
+      expect(current_path).to eq("/players")
+      expect(page).to_not have_content(@dj.name)
+    end
+
 end

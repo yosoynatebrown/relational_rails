@@ -27,4 +27,14 @@ RSpec.describe 'Teams index' do
     expect(page).to have_content(@jazz.name)
     expect(page).to_not have_content(@grizzlies.name)
   end
+
+
+    it 'has working delete team link' do
+      visit "/teams/"
+
+      click_link("Delete #{@giants.name}")
+
+      expect(current_path).to eq("/teams")
+      expect(page).to_not have_content(@giants.name)
+    end
 end
