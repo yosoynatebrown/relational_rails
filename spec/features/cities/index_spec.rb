@@ -33,7 +33,7 @@ RSpec.describe 'Cities index' do
     expect(page.has_link? "Coaches").to be true
   end
 
-  it 'links to the new coach page' do
+  it 'links to the new city page' do
     visit "/cities/"
 
     click_link("New City")

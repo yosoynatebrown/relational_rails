@@ -23,4 +23,12 @@ RSpec.describe 'Coaches index' do
     expect(page.text.index(@madden.name)).to be > page.text.index(@cooper.name)
   end
 
+  it 'links to the new coach page' do
+    visit "/coaches/"
+    save_and_open_page
+    click_link("New Coach")
+
+    expect(current_path).to eq("/coaches/new")
+  end
+
 end
