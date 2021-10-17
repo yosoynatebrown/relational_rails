@@ -33,4 +33,13 @@ RSpec.describe 'Coaches index' do
     expect(current_path).to eq("/coaches/#{@madden.id}/edit")
   end
 
+  it 'has delete coach link' do
+    visit "/coaches/"
+
+    click_link("Delete #{@madden.name}")
+
+    expect(current_path).to eq("/coaches")
+    expect(page).to_not have_content(@madden.name)
+  end
+
 end

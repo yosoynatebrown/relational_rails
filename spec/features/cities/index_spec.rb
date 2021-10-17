@@ -35,9 +35,18 @@ RSpec.describe 'Cities index' do
     expect(current_path).to eq("/cities/new")
   end
 
-  it 'links to the edit coach page' do
+  it 'links to the edit city page' do
     click_link("Edit #{@slc.name}")
 
     expect(current_path).to eq("/cities/#{@slc.id}/edit")
+  end
+
+  it 'has working delete city link' do
+    visit "/cities/"
+    
+    click_link("Delete #{@slc.name}")
+
+    expect(current_path).to eq("/cities")
+    expect(page).to_not have_content(@slc.name)
   end
 end

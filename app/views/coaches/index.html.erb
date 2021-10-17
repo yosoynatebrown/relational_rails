@@ -2,7 +2,8 @@
 
 
 <% @coaches.each do |coach| %>
-  <h6 class="#{coach.id}"><a href="/coaches/<%= coach.id %>"> Coach: <%= coach.name %> Created at: <%= coach.created_at %> </a> <a href="/coaches/<%= coach.id %>/edit">Edit <%= coach.name %></h6>
+  <h6 class="#{coach.id}"><a href="/coaches/<%= coach.id %>"> Coach: <%= coach.name %> Created at: <%= coach.created_at %> </a> <a href="/coaches/<%= coach.id %>/edit">Edit <%= coach.name %> </h6>
+    <h6><%=link_to "Delete #{coach.name}", "/coaches/#{coach.id}", method: :delete %></h6>
 <% end %>
 
 <a href='/coaches/new'>New Coach</a>
