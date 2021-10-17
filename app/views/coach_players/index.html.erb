@@ -1,5 +1,7 @@
 <h2><%= @coach.name%>'s Players</h2>
 
+<%= link_to "Sort Alphabetically", "/coaches/#{@coach.id}/players?alpha=true" %>
+
 
 <% @players.each do |player| %>
   <h6>Player: <%= player.name%> MVP?<%= player.MVP%> Career Total Points<%= player.career_total_points%></h6>
