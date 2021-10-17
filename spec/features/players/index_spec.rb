@@ -7,6 +7,8 @@ RSpec.describe 'Players index' do
     @cooper = Coach.create!(name: "John Cooper", won_championship: true, years_coaching: 7)
     @dj = Player.create!(name: "Derek Jeter", MVP: true, career_total_points: 4000, coach: @madden)
     @tb = Player.create!(name: "Tom Brady", MVP: true, career_total_points: 6000, coach: @cooper)
+    @mark = Player.create!(name: 'Mark van Eeghen', MVP: false, career_total_points: 1500, coach: @madden)
+
   end
   it 'shows the name of all players' do
     visit "/players/"
@@ -29,5 +31,13 @@ RSpec.describe 'Players index' do
     expect(page.has_link? "Cities").to be true
     expect(page.has_link? "Teams").to be true
     expect(page.has_link? "Coaches").to be true
+  end
+
+  it 'only shows the name of players who are MVPs' do
+    visit "/players/"
+
+    expect(page).to have_content(@dj.name)
+    expect(page).to have_content(@tb.name)
+    expect(page).to_not have_content(@mark.name)
   end
 end

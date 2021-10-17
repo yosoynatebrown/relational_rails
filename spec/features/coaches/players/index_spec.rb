@@ -36,4 +36,5 @@ RSpec.describe 'Coaches players index' do
     expect(page.has_link? "Teams").to be true
     expect(page.has_link? "Coaches").to be true
   end
+
 end
