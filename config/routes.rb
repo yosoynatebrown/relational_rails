@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/coaches/', to: 'coaches#create'
   patch '/coaches/:id', to: 'coaches#update'
   get '/coaches/:id/edit', to: 'coaches#edit'
+  get '/coaches/:id/players/new', to: 'coach_players#new'
+  post '/coaches/:id/players', to: 'coach_players#create'
 
 
   get '/cities', to: 'cities#index'

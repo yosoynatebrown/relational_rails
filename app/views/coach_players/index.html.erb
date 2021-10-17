@@ -4,3 +4,5 @@
 <% @players.each do |player| %>
   <h6>Player: <%= player.name%> MVP?<%= player.MVP%> Career Total Points<%= player.career_total_points%></h6>
 <% end %>
+
+<%=link_to "Add Player", "/coaches/#{@coach.id}/players/new"%>
