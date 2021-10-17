@@ -39,9 +39,9 @@ RSpec.describe 'Coaches players index' do
 
   it 'has a working link to sort the players in alphabetical order' do
     visit "/coaches/#{@madden.id}/players"
-    # save_and_open_page
+
     expect(page.has_link? "Sort Alphabetically").to be true
-    save_and_open_page
+    
     click_link "Sort Alphabetically"
 
     expect(page.text.index(@dj.name)).to be < page.text.index(@mj.name)
