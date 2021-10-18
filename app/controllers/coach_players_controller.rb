@@ -3,6 +3,9 @@ class CoachPlayersController < ApplicationController
     if params[:alpha]
       @coach = Coach.find(params[:id])
       @players = @coach.players.order(:name)
+    elsif params["Career Total Points >"]
+      @coach = Coach.find(params[:id])
+      @players = @coach.filter_by_career_total_points(params["Career Total Points >"])
     else
       @coach = Coach.find(params[:id])
       @players = @coach.players

@@ -71,4 +71,14 @@ RSpec.describe 'Cities teams index' do
     click_link("Update #{@jazz.name}")
     expect(current_path).to eq("/teams/#{@jazz.id}/edit")
   end
+
+  it "can filter by roster count" do
+    visit "/cities/#{@slc.id}/teams"
+
+    fill_in "Roster Size >", with: "40"
+    click_button("Only return records with more than stat for roster size")
+
+    expect(page).to have_content("Real")
+    expect(page).to_not have_content("Jazz")
+  end
 end

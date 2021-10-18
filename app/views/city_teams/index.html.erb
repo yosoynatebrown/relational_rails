@@ -9,4 +9,10 @@
   <h6><%=link_to "Delete #{team.name}", "/teams/#{team.id}", method: :delete %></h6>
 <% end %>
 
+<%= form_with url: "/cities/#{@city.id}/teams", method: :get, local: true do |form| %>
+  <%= form.label "Roster Size >" %>
+  <%= form.text_field "Roster Size >" %>
+  <%= form.submit "Only return records with more than stat for roster size" %>
+<% end %>
+
 <%=link_to "Add Team", "/cities/#{@city.id}/teams/new"%>

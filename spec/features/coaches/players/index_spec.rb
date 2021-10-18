@@ -56,7 +56,17 @@ RSpec.describe 'Coaches players index' do
   it 'links to edit page' do
 
     visit "/coaches/#{@madden.id}/players/"
-    
+
     expect(page.has_link? "Update #{@dj.name}").to be true
+  end
+
+  it 'can filter by career total points' do
+    visit "/coaches/#{@madden.id}/players"
+
+    fill_in "Career Total Points >", with: "5000"
+    click_button("Only return records with more than stat for career total points")
+
+    expect(page).to have_content("Michael Jordan")
+    expect(page).to_not have_content("Derek Jeter")
   end
 end
