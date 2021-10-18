@@ -17,7 +17,6 @@ class TeamsController < ApplicationController
       roster_count: params[:team][:roster_count].to_i
       })
 
-      binding.pry
       redirect_to '/teams'
   end
 
@@ -40,7 +39,7 @@ class TeamsController < ApplicationController
   end
 
   private
-    def team_params
-      params.permit(:name, :share_stadium, :roster_count, :city_id)
-    end
+      def team_params
+        params.permit(:name, :share_stadium, :roster_count, :city_id)
+      end
 end

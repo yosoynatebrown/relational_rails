@@ -20,20 +20,17 @@ class PlayersController < ApplicationController
       redirect_to '/players'
   end
 
+  def edit
+    @player = Player.find(params[:id])
+    @coach = Coach.find(params[:coach_id])
+  end
 
-    def edit
-      require "pry"; binding.pry
-      @coach = Coach.find(params[:id])
-      @player = Player.find(params[:id])
+  def update
+    @player = Player.find(params[:id])
+    @player.update(player_params)
 
-    end
-
-      def update
-        @player = Player.find(params[:id])
-        @player.update(player_params)
-
-        redirect_to "/players/#{@player.id}"
-      end
+    redirect_to "/players/#{@player.id}"
+  end
 
   def destroy
     @player = Player.find(params[:id])
@@ -41,4 +38,9 @@ class PlayersController < ApplicationController
 
     redirect_to '/players'
   end
+
+  private
+      def player_params
+        params.permit(:name, :MVP, :career_total_points, :coach_id)
+      end
 end

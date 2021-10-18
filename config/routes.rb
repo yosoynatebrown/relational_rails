@@ -15,9 +15,6 @@ Rails.application.routes.draw do
   get 'players/:id/edit', to: 'players#edit'
   patch '/players/:id/', to: 'players#update'
 
-
-
-
   get '/cities', to: 'cities#index'
   get '/cities/new', to: 'cities#new'
   get '/cities/:id', to: 'cities#show'

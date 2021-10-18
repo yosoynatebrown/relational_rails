@@ -1,22 +1,26 @@
 require "rails_helper"
 
 RSpec.describe 'Updates Players' do
-  it 'has a working form' do
-    madden = Coach.create!(name: "John 'Maddog' Madden", won_championship: true, years_coaching: 18)
-    dj = Player.create!(name: "Derek Jeter", MVP: true, career_total_points: 4000, coach: madden)
+  before :each do
+    @madden = Coach.create!(name: "John Madden", won_championship: true, years_coaching: 18)
+    @cooper = Coach.create!(name: "John Cooper", won_championship: true, years_coaching: 7)
+    @dj = Player.create!(name: "Derek Jeter", MVP: true, career_total_points: 4000, coach: @madden)
+    @tb = Player.create!(name: "Tom Brady", MVP: true, career_total_points: 6000, coach: @cooper)
+  end
 
-    visit "/coaches/#{madden.id}/players/"
+  it 'has the ability to update the current player' do
+    visit "/players/#{@dj.id}"
 
-    click_link "Update #{dj.name}"
+    click_link('Update Player')
+    expect(current_path).to eq("/players/#{@dj.id}/edit")
 
-    fill_in("name", with: "Allen Iverson")
+
+    fill_in("name", with: "Yani Gourde")
     check "MVP"
-    fill_in("career_total_points", with: "2200")
+    fill_in("career_total_points", with: "200")
+    click_button "Update Player"
 
-    click_link "Update Player"
-
-    expect(current_path).to eq("/players/#{dj.id}")
-    expect(page).to have_content("Allen Iverson")
-    expect(page).to have_content("4000")
+    expect(current_path).to eq("/players/#{@dj.id}")
+    expect(page).to have_content("Yani Gourde")
   end
 end
