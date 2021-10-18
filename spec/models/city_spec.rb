@@ -11,4 +11,8 @@ RSpec.describe "City model" do
   it 'counts the number of players a city has' do
     expect(@slc.team_count).to eq(2)
   end
+
+  it 'can filter teams by their roster count' do
+    expect(@slc.filter_by_roster_count(40)[0].name).to eq("Real Salt Lake")
+  end
 end
