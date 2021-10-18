@@ -14,6 +14,8 @@ Created at:<br/>
 <%= @team.created_at %><br/>
 Updated at:<br/>
 <%= @team.updated_at %><br/>
+City:<br/>
+<%= @team.city.name %><br/>
 
-
+<%= link_to "Update Team", "/teams/#{@team.id}/edit?city_id=#{@team.city.id}" %>
 <%=link_to "Delete Team", "/teams/#{@team.id}", method: :delete %>

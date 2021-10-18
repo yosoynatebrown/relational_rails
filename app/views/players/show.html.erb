@@ -15,5 +15,5 @@ Created at:<br/>
 Updated at:<br/>
 <%= @player.updated_at %><br/>
 
-
+<%= link_to "Update Player", "/players/#{@player.id}/edit?coach_id=#{@player.coach.id}" %>
 <%=link_to "Delete Player", "/players/#{@player.id}", method: :delete %>

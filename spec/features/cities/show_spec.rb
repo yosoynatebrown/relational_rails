@@ -65,5 +65,4 @@ RSpec.describe 'Cities show' do
     expect(page).to_not have_content(@jazz.name)
     expect(page).to_not have_content(@real.name)
   end
-
 end
