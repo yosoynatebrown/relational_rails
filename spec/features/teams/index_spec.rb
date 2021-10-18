@@ -29,12 +29,22 @@ RSpec.describe 'Teams index' do
   end
 
 
-    it 'has working delete team link' do
-      visit "/teams/"
+  it 'has working delete team link' do
+    visit "/teams/"
 
-      click_link("Delete #{@giants.name}")
+    click_link("Delete #{@giants.name}")
 
-      expect(current_path).to eq("/teams")
-      expect(page).to_not have_content(@giants.name)
-    end
+    expect(current_path).to eq("/teams")
+    expect(page).to_not have_content(@giants.name)
+  end
+
+  it 'has a link to an update form' do
+    visit "/teams/"
+    click_link("Update #{@giants.name}")
+    expect(current_path).to eq("/teams/#{@giants.id}/edit")
+
+    visit "/teams/"
+    click_link("Update #{@jazz.name}")
+    expect(current_path).to eq("/teams/#{@jazz.id}/edit")
+  end
 end
