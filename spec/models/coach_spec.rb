@@ -12,4 +12,8 @@ RSpec.describe "Coach model" do
   it 'counts the number of players a coach has' do
     expect(@madden.player_count).to eq(3)
   end
+
+  it 'can filter players by their career total points' do
+    expect(@madden.filter_by_career_total_points(2000)[0].name).to eq("Fred Biletnikoff")
+  end
 end
