@@ -1,9 +1,10 @@
-<%= form_with url: "/coaches/#{@coach.id}/players/#{@player.id}", method: :patch, local: true do |form| %>
+<%= form_with url: "players/#{@player.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
   <%= form.label :MVP %>
   <%= form.check_box :MVP %>
   <%= form.label :career_total_points %>
   <%= form.text_field :career_total_points %>
+  <%= form.hidden_field :coach_id, value: @coach.id %>
   <%= form.submit "Update Player" %>
 <% end %>

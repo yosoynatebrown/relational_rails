@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   post '/coaches/:id/players', to: 'coach_players#create'
   delete '/coaches/:id', to: 'coaches#destroy'
 
+  get 'players/:id/edit', to: 'players#edit'
+  patch '/players/:id/', to: 'players#update'
+
+
+
 
   get '/cities', to: 'cities#index'
   get '/cities/new', to: 'cities#new'

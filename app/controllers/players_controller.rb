@@ -20,6 +20,21 @@ class PlayersController < ApplicationController
       redirect_to '/players'
   end
 
+
+    def edit
+      require "pry"; binding.pry
+      @coach = Coach.find(params[:id])
+      @player = Player.find(params[:id])
+
+    end
+
+      def update
+        @player = Player.find(params[:id])
+        @player.update(player_params)
+
+        redirect_to "/players/#{@player.id}"
+      end
+
   def destroy
     @player = Player.find(params[:id])
     @player.destroy
