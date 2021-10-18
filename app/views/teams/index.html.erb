@@ -3,5 +3,6 @@
 
 <% @teams.each do |team| %>
   <h6><a href="/teams/<%= team.id %>">Team name: <%= team.name %> Shares Stadium? <%= team.share_stadium %> Roster Count:<%= team.roster_count %> Team's City: <%= team.city.name%></a></h6>
+  <h6><%=link_to "Update #{team.name}", "/teams/#{team.id}/edit?city_id=#{team.city.id}", method: :get %></h6>
   <h6><%=link_to "Delete #{team.name}", "/teams/#{team.id}", method: :delete %></h6>
 <% end %>
