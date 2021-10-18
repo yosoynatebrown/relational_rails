@@ -44,4 +44,20 @@ RSpec.describe 'Teams show' do
     expect(current_path).to eq("/teams")
     expect(page).to_not have_content(@giants.name)
   end
+
+  it 'has the ability to update the current team' do
+    visit "/teams/#{@giants.id}"
+
+    click_link('Update Team')
+    expect(current_path).to eq("/teams/#{@giants.id}/edit")
+
+
+    fill_in("name", with: "New York Jets")
+    check "share_stadium"
+    fill_in("roster_count", with: "27")
+    click_button "Update Team"
+
+    expect(current_path).to eq("/teams/#{@giants.id}")
+    expect(page).to have_content("New York Jets")
+  end
 end

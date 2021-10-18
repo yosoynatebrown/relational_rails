@@ -21,10 +21,26 @@ class TeamsController < ApplicationController
       redirect_to '/teams'
   end
 
+  def edit
+    @team = Team.find(params[:id])
+    @city = City.find(params[:city_id])
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    @team.update(team_params)
+    redirect_to "/teams/#{@team.id}"
+  end
+
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
 
     redirect_to '/teams'
   end
+
+  private
+    def team_params
+      params.permit(:name, :share_stadium, :roster_count, :city_id)
+    end
 end
