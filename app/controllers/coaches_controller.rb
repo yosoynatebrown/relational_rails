@@ -11,8 +11,7 @@ class CoachesController < ApplicationController
   end
 
   def create
-    coach = Coach.create!(coach_params)
-
+    Coach.create!(coach_params)
 
     redirect_to '/coaches'
   end
@@ -22,8 +21,8 @@ class CoachesController < ApplicationController
   end
 
   def update
-    @coach = Coach.find(params[:id])
-    @coach.update(coach_params)
+    coach = Coach.find(params[:id])
+    coach.update(coach_params)
 
     redirect_to '/coaches'
   end

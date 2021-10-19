@@ -5,6 +5,6 @@
   <%= form.check_box :share_stadium %>
   <%= form.label :roster_count %>
   <%= form.text_field :roster_count %>
-  <%= form.hidden_field :city_id, value: @city.id %>
+  <%= form.hidden_field :city_id, value: @team.city.id %>
   <%= form.submit "Update Team" %>
 <% end %>

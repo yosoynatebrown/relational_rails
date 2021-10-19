@@ -11,9 +11,9 @@ class CitiesController < ApplicationController
   end
 
   def create
-    city = City.create!(city_params)
+    City.create!(city_params)
 
-      redirect_to '/cities'
+    redirect_to '/cities'
   end
 
   def edit

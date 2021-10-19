@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.where(share_stadium: true)
+    @teams = Team.shares_stadium?
   end
 
   def new
@@ -11,14 +11,13 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = Team.create!(team_params)
+    Team.create!(team_params)
 
-      redirect_to '/teams'
+    redirect_to '/teams'
   end
 
   def edit
     @team = Team.find(params[:id])
-    @city = City.find(params[:city_id])
   end
 
   def update
