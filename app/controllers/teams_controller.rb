@@ -11,11 +11,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = Team.create!({
-      name: params[:team][:name],
-      share_stadium: params[:team][:share_stadium] == "on" ? true : false,
-      roster_count: params[:team][:roster_count].to_i
-      })
+    team = Team.create!(team_params)
 
       redirect_to '/teams'
   end
@@ -39,7 +35,17 @@ class TeamsController < ApplicationController
   end
 
   private
-      def team_params
-        params.permit(:name, :share_stadium, :roster_count, :city_id)
+    def team_params
+      result = {name: params[:name],
+                roster_count: params[:roster_count],
+                city_id: params[:city_id]
+              }
+
+      if params[:share_stadium] == 'on'
+        result[:share_stadium] = true
+      else
+        result[:share_stadium] = false
       end
+      result
+    end
 end
