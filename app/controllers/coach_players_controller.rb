@@ -18,9 +18,9 @@ class CoachPlayersController < ApplicationController
 
   def create
     @coach = Coach.find(params[:id])
-    player = Player.create!(player_params)
+    Player.create!(player_params)
 
-      redirect_to "/coaches/#{@coach.id}/players"
+    redirect_to "/coaches/#{@coach.id}/players"
   end
 
   private

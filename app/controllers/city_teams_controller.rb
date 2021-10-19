@@ -18,9 +18,9 @@ class CityTeamsController < ApplicationController
 
   def create
     @city = City.find(params[:id])
-    team = Team.create!(team_params)
+    Team.create!(team_params)
 
-      redirect_to "/cities/#{@city.id}/teams"
+    redirect_to "/cities/#{@city.id}/teams"
   end
 
   private
