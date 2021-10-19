@@ -11,11 +11,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    player = Player.create!({
-      name: params[:player][:name],
-      MVP: params[:player][:MVP] == "on" ? true : false,
-      career_total_points: params[:player][:career_total_points].to_i
-      })
+      player = Player.create!(player_params)
 
       redirect_to '/players'
   end
@@ -40,7 +36,17 @@ class PlayersController < ApplicationController
   end
 
   private
-      def player_params
-        params.permit(:name, :MVP, :career_total_points, :coach_id)
+    def player_params
+      result = {name: params[:name],
+                career_total_points: params[:career_total_points],
+                coach_id: params[:coach_id]
+              }
+
+      if params[:MVP] == 'on'
+        result[:MVP] = true
+      else
+        result[:MVP] = false
       end
+      result
+    end
 end

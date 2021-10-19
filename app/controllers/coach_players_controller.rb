@@ -18,22 +18,23 @@ class CoachPlayersController < ApplicationController
 
   def create
     @coach = Coach.find(params[:id])
-    player = Player.create!({
-      name: params[:name],
-      MVP: params[:MVP] == "1" ? true : false,
-      career_total_points: params[:career_total_points].to_i,
-      coach_id: params[:coach_id]
-      })
+    player = Player.create!(player_params)
 
       redirect_to "/coaches/#{@coach.id}/players"
   end
 
   private
-  def coach_params
-    params.permit(:name, :won_championship, :years_coaching)
-  end
+    def player_params
+      result = {name: params[:name],
+                career_total_points: params[:career_total_points],
+                coach_id: params[:coach_id]
+              }
 
-  def player_params
-    params.permit(:name, :MVP, :years_coaching)
-  end
+      if params[:MVP] == 'on'
+        result[:MVP] = true
+      else
+        result[:MVP] = false
+      end
+      result
+    end
 end

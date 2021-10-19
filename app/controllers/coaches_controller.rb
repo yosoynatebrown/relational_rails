@@ -11,11 +11,8 @@ class CoachesController < ApplicationController
   end
 
   def create
-    coach = Coach.create!({
-      name: params[:name],
-      won_championship: params[:won_championship] == "1" ? true : false,
-      years_coaching: params[:years_coaching].to_i
-      })
+    coach = Coach.create!(coach_params)
+
 
     redirect_to '/coaches'
   end
@@ -39,7 +36,16 @@ class CoachesController < ApplicationController
   end
 
   private
-  def coach_params
-    params.permit(:name, :won_championship, :years_coaching)
-  end
+    def coach_params
+      result = {name: params[:name],
+                years_coaching: params[:years_coaching]
+              }
+
+      if params[:won_championship] == 'on'
+        result[:won_championship] = true
+      else
+        result[:won_championship] = false
+      end
+      result
+    end
 end

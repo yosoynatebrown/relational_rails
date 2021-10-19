@@ -11,11 +11,7 @@ class CitiesController < ApplicationController
   end
 
   def create
-    city = City.create!({
-      name: params[:name],
-      above_4000_feet: params[:above_4000_feet] == "1" ? true : false,
-      population: params[:population].to_i
-      })
+    city = City.create!(city_params)
 
       redirect_to '/cities'
   end
@@ -39,7 +35,17 @@ class CitiesController < ApplicationController
   end
 
   private
-  def city_params
-    params.permit(:name, :above_4000_feet, :population)
-  end
+    def city_params
+      result = {name: params[:name],
+                population: params[:population]
+              }
+
+      if params[:above_4000_feet] == 'on'
+        result[:above_4000_feet] = true
+      else
+        result[:above_4000_feet] = false
+      end
+      result
+    end
+
 end

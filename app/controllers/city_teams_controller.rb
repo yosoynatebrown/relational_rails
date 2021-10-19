@@ -18,13 +18,23 @@ class CityTeamsController < ApplicationController
 
   def create
     @city = City.find(params[:id])
-    team = Team.create!({
-      name: params[:name],
-      share_stadium: params[:share_stadium] == "1" ? true : false,
-      roster_count: params[:roster_count].to_i,
-      city_id: params[:city_id]
-      })
+    team = Team.create!(team_params)
 
       redirect_to "/cities/#{@city.id}/teams"
   end
+
+  private
+    def team_params
+      result = {name: params[:name],
+                roster_count: params[:roster_count],
+                city_id: params[:city_id]
+              }
+
+      if params[:share_stadium] == 'on'
+        result[:share_stadium] = true
+      else
+        result[:share_stadium] = false
+      end
+      result
+    end
 end
