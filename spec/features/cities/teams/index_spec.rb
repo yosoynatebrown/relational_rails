@@ -76,7 +76,7 @@ RSpec.describe 'Cities teams index' do
     visit "/cities/#{@slc.id}/teams"
 
     fill_in "Roster Size >", with: "40"
-    click_button("Only return records with more than stat for roster size")
+    click_button("Submit")
 
     expect(page).to have_content("Real")
     expect(page).to_not have_content("Jazz")
