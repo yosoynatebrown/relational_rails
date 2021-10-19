@@ -64,7 +64,7 @@ RSpec.describe 'Coaches players index' do
     visit "/coaches/#{@madden.id}/players"
 
     fill_in "Career Total Points >", with: "5000"
-    click_button("Only return records with more than stat for career total points")
+    click_button("Submit")
 
     expect(page).to have_content("Michael Jordan")
     expect(page).to_not have_content("Derek Jeter")

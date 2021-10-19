@@ -11,7 +11,7 @@
 <%= form_with url: "/coaches/#{@coach.id}/players", method: :get, local: true do |form| %>
   <%= form.label "Career Total Points >" %>
   <%= form.text_field "Career Total Points >" %>
-  <%= form.submit "Only return records with more than stat for career total points" %>
+  <%= form.submit "Submit" %>
 <% end %>
 
 <%=link_to "Add Player", "/coaches/#{@coach.id}/players/new"%>
