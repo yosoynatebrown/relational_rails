@@ -7,7 +7,7 @@ class CoachesController < ApplicationController
   end
 
   def show
-    @coach = Coach.find(params[:id])
+    @coach = load_coach(params[:id])
   end
 
   def create
@@ -17,18 +17,18 @@ class CoachesController < ApplicationController
   end
 
   def edit
-    @coach = Coach.find(params[:id])
+    @coach = load_coach(params[:id])
   end
 
   def update
-    coach = Coach.find(params[:id])
+    coach = load_coach(params[:id])
     coach.update(coach_params)
 
     redirect_to '/coaches'
   end
 
   def destroy
-    @coach = Coach.find(params[:id])
+    @coach = load_coach(params[:id])
     @coach.destroy
 
     redirect_to '/coaches'
@@ -40,11 +40,15 @@ class CoachesController < ApplicationController
                 years_coaching: params[:years_coaching]
               }
 
-      if params[:won_championship] == 'on'
+      if params[:won_championship] == '1'
         result[:won_championship] = true
       else
         result[:won_championship] = false
       end
       result
+    end
+
+    def load_coach(id)
+      Coach.find(id)
     end
 end
