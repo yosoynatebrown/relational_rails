@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.where(share_stadium: true)
+    @teams = Team.only_share_stadiums
   end
 
   def new

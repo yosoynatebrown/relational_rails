@@ -8,4 +8,8 @@ class Coach < ApplicationRecord
  def filter_by_career_total_points(point_cutoff)
    players.where("career_total_points > #{point_cutoff}")
  end
+ 
+ def self.order_by_created_at
+   order(created_at: :desc)
+ end
 end

@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   def index
-    @players = Player.where(MVP: true)
+    @players = Player.only_mvps
   end
 
   def new
@@ -11,10 +11,9 @@ class PlayersController < ApplicationController
   end
 
   def create
-    binding.pry
-      Player.create!(player_params)
+    Player.create!(player_params)
 
-      redirect_to '/players'
+    redirect_to '/players'
   end
 
   def edit

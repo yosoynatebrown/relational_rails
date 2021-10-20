@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   def index
-    @cities = City.order(created_at: :desc)
+    @cities = City.order_by_created_at
   end
 
   def new

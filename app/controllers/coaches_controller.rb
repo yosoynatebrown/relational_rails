@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
   def index
-    @coaches = Coach.order(created_at: :desc)
+    @coaches = Coach.order_by_created_at
   end
 
   def new

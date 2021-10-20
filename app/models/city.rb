@@ -8,4 +8,8 @@ class City < ApplicationRecord
   def filter_by_roster_count(roster_cutoff)
     teams.where("roster_count > #{roster_cutoff}")
   end
+
+  def self.order_by_created_at
+    order(created_at: :desc)
+  end
 end
