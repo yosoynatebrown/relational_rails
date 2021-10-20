@@ -1,6 +1,9 @@
 require "rails_helper"
 
-RSpec.describe "Team model" do
+RSpec.describe Team do
+  describe 'relationship' do
+    it { should belong_to :city }
+  end
   before(:each) do
     @slc = City.create!(name: "Salt Lake City", above_4000_feet: true, population: 200_000)
     @sf = City.create!(name: "San Francisco", above_4000_feet: false, population: 875_000)

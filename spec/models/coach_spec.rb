@@ -1,6 +1,9 @@
 require "rails_helper"
 
-RSpec.describe "Coach model" do
+RSpec.describe Coach do
+  describe 'relationship' do
+    it { should have_many :players }
+  end
   before(:each) do
     @madden = Coach.create!(name: "John Madden", won_championship: true, years_coaching: 18)
     @cooper = Coach.create!(name: "Jon Cooper", won_championship: true, years_coaching: 7)
