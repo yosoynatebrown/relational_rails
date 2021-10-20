@@ -1,4 +1,4 @@
-<%= form_with url: "/coaches/#{@coach.id}/players/#{@player.id}", method: :patch, local: true do |form| %>
+<%= form_with url: "players/#{@player.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
   <%= form.label :MVP %>

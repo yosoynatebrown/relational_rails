@@ -5,7 +5,7 @@
 
 <% @players.each do |player| %>
   <h6>Player: <%= player.name%> MVP?<%= player.MVP%> Career Total Points<%= player.career_total_points%></h6>
-  <h6><%=link_to "Update #{player.name}", "players/#{player.id}/edit", method: :get %></h6>
+  <h6><%=link_to "Update #{player.name}", "/players/#{player.id}/edit?coach_id=#{player.coach.id}", method: :get %></h6>
 <% end %>
 
 <%= form_with url: "/coaches/#{@coach.id}/players", method: :get, local: true do |form| %>
