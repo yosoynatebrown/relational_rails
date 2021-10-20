@@ -1,23 +1,23 @@
 class CityTeamsController < ApplicationController
   def index
     if params[:alpha]
-      @city = City.find(params[:id])
+      @city = load_city(params[:id])
       @teams = @city.teams.order(:name)
     elsif params["Roster Size >"]
-      @city = City.find(params[:id])
+      @city = load_city(params[:id])
       @teams = @city.filter_by_roster_count(params["Roster Size >"])
     else
-      @city = City.find(params[:id])
+      @city = load_city(params[:id])
       @teams = @city.teams
     end
   end
 
   def new
-    @city = City.find(params[:id])
+    @city = load_city(params[:id])
   end
 
   def create
-    @city = City.find(params[:id])
+    @city = load_city(params[:id])
     Team.create!(team_params)
 
     redirect_to "/cities/#{@city.id}/teams"
@@ -30,11 +30,15 @@ class CityTeamsController < ApplicationController
                 city_id: params[:city_id]
               }
 
-      if params[:share_stadium] == 'on'
+      if params[:share_stadium] == '1'
         result[:share_stadium] = true
       else
         result[:share_stadium] = false
       end
       result
+    end
+
+    def load_city(id)
+      City.find(id)
     end
 end

@@ -4,8 +4,7 @@ require "rails_helper"
 RSpec.describe 'Coaches index' do
   before :each do
     @madden = Coach.create!(name: "John Madden", won_championship: true, years_coaching: 18)
-    sleep(1)
-    @cooper = Coach.create!(name: "John Cooper", won_championship: true, years_coaching: 7)
+    @cooper = Coach.create!(name: "Jon Cooper", won_championship: true, years_coaching: 7)
     visit "/coaches/"
   end
   it 'shows the name of all coaches' do

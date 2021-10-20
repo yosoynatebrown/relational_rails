@@ -1,33 +1,27 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.where(share_stadium: true)
+    @teams = Team.only_share_stadiums
   end
 
   def new
   end
 
   def show
-    @team = Team.find(params[:id])
-  end
-
-  def create
-    Team.create!(team_params)
-
-    redirect_to '/teams'
+    @team = load_team(params[:id])
   end
 
   def edit
-    @team = Team.find(params[:id])
+    @team = load_team(params[:id])
   end
 
   def update
-    @team = Team.find(params[:id])
+    @team = load_team(params[:id])
     @team.update(team_params)
     redirect_to "/teams/#{@team.id}"
   end
 
   def destroy
-    @team = Team.find(params[:id])
+    @team = load_team(params[:id])
     @team.destroy
 
     redirect_to '/teams'
@@ -40,11 +34,15 @@ class TeamsController < ApplicationController
                 city_id: params[:city_id]
               }
 
-      if params[:share_stadium] == 'on'
+      if params[:share_stadium] == '1'
         result[:share_stadium] = true
       else
         result[:share_stadium] = false
       end
       result
+    end
+
+    def load_team(id)
+      Team.find(id)
     end
 end

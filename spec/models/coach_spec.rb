@@ -1,8 +1,12 @@
 require "rails_helper"
 
-RSpec.describe "Coach model" do
+RSpec.describe Coach do
+  describe 'relationship' do
+    it { should have_many :players }
+  end
   before(:each) do
     @madden = Coach.create!(name: "John Madden", won_championship: true, years_coaching: 18)
+    @cooper = Coach.create!(name: "Jon Cooper", won_championship: true, years_coaching: 7)
 
     @willie = Player.create!(name: 'Willie Brown', MVP: false, career_total_points: 1000, coach: @madden)
     @fred = Player.create!(name: 'Fred Biletnikoff', MVP: true, career_total_points: 3000, coach: @madden)
@@ -16,4 +20,9 @@ RSpec.describe "Coach model" do
   it 'can filter players by their career total points' do
     expect(@madden.filter_by_career_total_points(2000)[0].name).to eq("Fred Biletnikoff")
   end
+
+  it 'can sort (in descending order) coaches by created_at' do
+    expect(Coach.order_by_created_at[0].name).to eq("Jon Cooper")
+  end
+
 end

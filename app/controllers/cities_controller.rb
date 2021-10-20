@@ -1,13 +1,13 @@
 class CitiesController < ApplicationController
   def index
-    @cities = City.order(created_at: :desc)
+    @cities = City.order_by_created_at
   end
 
   def new
   end
 
   def show
-    @city = City.find(params[:id])
+    @city = load_city(params[:id])
   end
 
   def create
@@ -17,18 +17,18 @@ class CitiesController < ApplicationController
   end
 
   def edit
-    @city = City.find(params[:id])
+    @city = load_city(params[:id])
   end
 
   def update
-    @city = City.find(params[:id])
+    @city = load_city(params[:id])
     @city.update(city_params)
 
     redirect_to '/cities'
   end
 
   def destroy
-    @city = City.find(params[:id])
+    @city = load_city(params[:id])
     @city.destroy
 
     redirect_to '/cities'
@@ -40,7 +40,7 @@ class CitiesController < ApplicationController
                 population: params[:population]
               }
 
-      if params[:above_4000_feet] == 'on'
+      if params[:above_4000_feet] == '1'
         result[:above_4000_feet] = true
       else
         result[:above_4000_feet] = false
@@ -48,4 +48,7 @@ class CitiesController < ApplicationController
       result
     end
 
+    def load_city(id)
+      City.find(id)
+    end
 end
