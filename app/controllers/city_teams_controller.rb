@@ -30,7 +30,7 @@ class CityTeamsController < ApplicationController
                 city_id: params[:city_id]
               }
 
-      if params[:share_stadium] == 'on'
+      if params[:share_stadium] == '1'
         result[:share_stadium] = true
       else
         result[:share_stadium] = false

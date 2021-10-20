@@ -30,8 +30,8 @@ class CoachPlayersController < ApplicationController
                 career_total_points: params[:career_total_points],
                 coach_id: params[:coach_id]
               }
-
-      if params[:MVP] == 'on'
+              require "pry"; binding.pry
+      if params[:MVP] == '1'
         result[:MVP] = true
       else
         result[:MVP] = false

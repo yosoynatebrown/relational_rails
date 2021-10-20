@@ -10,12 +10,6 @@ class PlayersController < ApplicationController
     @player = load_player(params[:id])
   end
 
-  def create
-    Player.create!(player_params)
-
-    redirect_to '/players'
-  end
-
   def edit
     @player = load_player(params[:id])
   end
@@ -37,12 +31,10 @@ class PlayersController < ApplicationController
   private
 
     def player_params
-      params.permit(:name)
       result = {name: params[:name],
                 career_total_points: params[:career_total_points],
                 coach_id: params[:coach_id]
               }
-
       if params[:MVP] == '1'
         result[:MVP] = true
       else

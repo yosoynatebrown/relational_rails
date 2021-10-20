@@ -40,7 +40,7 @@ class CitiesController < ApplicationController
                 population: params[:population]
               }
 
-      if params[:above_4000_feet] == 'on'
+      if params[:above_4000_feet] == '1'
         result[:above_4000_feet] = true
       else
         result[:above_4000_feet] = false

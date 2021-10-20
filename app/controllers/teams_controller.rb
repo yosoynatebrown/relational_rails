@@ -10,12 +10,6 @@ class TeamsController < ApplicationController
     @team = load_team(params[:id])
   end
 
-  def create
-    Team.create!(team_params)
-
-    redirect_to '/teams'
-  end
-
   def edit
     @team = load_team(params[:id])
   end

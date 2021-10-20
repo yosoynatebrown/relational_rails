@@ -19,8 +19,7 @@ RSpec.describe Team do
   end
 
   it 'can provide list of teams who share their stadium' do
-    expect(Team.only_share_stadiums.length).to eq(2)
-    expect(Team.only_share_stadiums[0].name).to eq("San Francisco Giants")
-    expect(Team.only_share_stadiums[1].name).to eq("Utah Jazz")
+    expect(Team.only_share_stadiums).to include(@giants)
+    expect(Team.only_share_stadiums).to include(@jazz)
   end
 end
