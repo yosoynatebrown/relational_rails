@@ -20,9 +20,9 @@ RSpec.describe Player do
   end
 
   it 'can provide list of players who are MVPs' do
-    expect(Player.only_mvps.length).to eq(2)
-    expect(Player.only_mvps[0].name).to eq("Willie Brown")
-    expect(Player.only_mvps[1].name).to eq("Fred Biletnikoff")
+    expect(Player.only_mvps).to include(@willie)
+    expect(Player.only_mvps).to include(@fred)
+    expect(Player.only_mvps).to_not include(@mark)
   end
 
 

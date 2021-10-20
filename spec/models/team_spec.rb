@@ -21,5 +21,6 @@ RSpec.describe Team do
   it 'can provide list of teams who share their stadium' do
     expect(Team.only_share_stadiums).to include(@giants)
     expect(Team.only_share_stadiums).to include(@jazz)
+    expect(Team.only_share_stadiums).to_not include(@grizzlies)
   end
 end
